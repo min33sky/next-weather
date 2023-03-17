@@ -17,7 +17,7 @@ export default function SearchBar({ keyword, setKeyword }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-sm items-center justify-between gap-3 rounded-full border bg-slate-100 p-2"
+      className="mt-48 flex w-full max-w-sm items-center justify-between gap-3 rounded-full border bg-slate-100 p-2"
     >
       <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
       <input

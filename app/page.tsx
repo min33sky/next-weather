@@ -31,10 +31,10 @@ export default function Home() {
   }, [debouncedKeyword]);
 
   return (
-    <div className="flex h-full flex-col items-center justify-center bg-red-100">
+    <div className="flex h-full flex-col items-center justify-start">
       <SearchBar keyword={keyword} setKeyword={setKeyword} />
       <div>
-        {errorMessage ? (
+        {errorMessage || !result ? (
           <div className="text-red-500">{errorMessage}</div>
         ) : (
           <WeatherCard

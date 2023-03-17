@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'nanum-gothic': ['var(--font-nanum-gothic)'],
+      },
       colors: {
         brand: {
           DEFAULT: '#5e17eb',
