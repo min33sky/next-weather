@@ -21,7 +21,11 @@ export default function Home() {
             setErrorMessage('');
             setResult(res.data);
           } else {
-            setErrorMessage(res.data.message);
+            if (res.data.message === 'city not found') {
+              setErrorMessage('도시를 찾을 수 없습니다... 🥸');
+            } else {
+              setErrorMessage(res.data.message);
+            }
           }
         })
         .catch((err) => {
@@ -35,7 +39,7 @@ export default function Home() {
       <SearchBar keyword={keyword} setKeyword={setKeyword} />
       <div>
         {errorMessage || !result ? (
-          <div className="text-red-500">{errorMessage}</div>
+          <p className="mt-4 font-bold text-red-400">{errorMessage}</p>
         ) : (
           <WeatherCard
             description={result?.weather[0].description || ''}
