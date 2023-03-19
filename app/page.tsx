@@ -17,7 +17,11 @@ export default function Home() {
 
   useEffect(() => {
     if (debouncedKeyword !== '') {
-      fetch(`/api/search/${debouncedKeyword}`)
+      fetch(`/api/search/${debouncedKeyword}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
         .then((res) => res.json())
         .then((res) => {
           if (res.data.cod === 200) {

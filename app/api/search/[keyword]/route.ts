@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const city = request.url.split('/').pop();
 
+  console.log('***** city : ', city);
+
   // https://api.openweathermap.org/data/2.5/weather?q={city name}&lang=kr&appid={API key}&units=metric
   try {
     const response = await fetch(
