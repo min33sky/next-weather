@@ -5,21 +5,25 @@ import WeatherCard from '@/components/WeatherCard';
 import useDebounce from '@/hooks/useDebounce';
 import { Weather } from '@/types/weather';
 import { useEffect, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 export default function Home() {
-  const [keyword, setKeyword] = useState('');
+  const searchParmas = useSearchParams();
+  const [keyword, setKeyword] = useState(searchParmas.get('query') || '');
   const debouncedKeyword = useDebounce(keyword, 500);
   const [result, setResult] = useState<Weather>();
   const [errorMessage, setErrorMessage] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
-    if (debouncedKeyword) {
+    if (debouncedKeyword !== '') {
       fetch(`/api/search/${debouncedKeyword}`)
         .then((res) => res.json())
         .then((res) => {
           if (res.data.cod === 200) {
             setErrorMessage('');
             setResult(res.data);
+            router.replace(`/?query=${debouncedKeyword}`);
           } else {
             if (res.data.message === 'city not found') {
               setErrorMessage('도시를 찾을 수 없습니다... 🥸');

@@ -21,7 +21,7 @@ export default function WeatherCard({
   icon,
 }: Props) {
   return (
-    <article className="mt-8 flex w-64 flex-col rounded-lg bg-white px-4 py-2 shadow-2xl">
+    <article className="mt-8 flex w-64 flex-col rounded-lg bg-white px-5 pb-6 shadow-2xl">
       <img
         className="w-full"
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
