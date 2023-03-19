@@ -3,16 +3,20 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const city = request.url.split('/').pop();
   const { searchParams } = new URL(request.url);
+  const keyword = searchParams.get('keyword');
 
   console.log('***** city : ', city);
   console.log('sibal: ', searchParams);
   console.log('***** searchParams : ', searchParams.get('keyword'));
-  console.log('***** searchParams : ', searchParams.get('query'));
 
   // https://api.openweathermap.org/data/2.5/weather?q={city name}&lang=kr&appid={API key}&units=metric
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=kr&appid=${process.env.NEXT_PUBLIC_OPEN_WEATHER_APP_ID}&units=metric`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${
+        keyword ?? city
+      }&lang=kr&appid=${
+        process.env.NEXT_PUBLIC_OPEN_WEATHER_APP_ID
+      }&units=metric`,
     );
     const data = await response.json();
 
