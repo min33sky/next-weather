@@ -5,10 +5,10 @@
 ## Stack
 
 - React
-- Next.js@13.2
+- Next.js `13`
 - TypeScript
 - Tailwind CSS
 
 ## Reference
 
-[아이콘](https://openweathermap.org/weather-conditions)
+[날씨아이콘](https://openweathermap.org/weather-conditions)
