@@ -1,4 +1,5 @@
 import { formatTime } from '@/utils/format';
+import Image from 'next/image';
 import React from 'react';
 
 interface Props {
@@ -21,10 +22,11 @@ export default function WeatherCard({
   icon,
 }: Props) {
   return (
-    <article className="mt-8 flex w-64 flex-col rounded-lg bg-white px-5 pb-6 shadow-2xl">
-      <img
-        className="w-full"
+    <article className="mt-8 flex w-64 flex-col items-center rounded-lg bg-white px-5 pb-6 shadow-2xl">
+      <Image
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+        width={200}
+        height={200}
         alt="icon"
       />
       <p className="-mt-10 text-center text-3xl font-bold">{temp}℃</p>
