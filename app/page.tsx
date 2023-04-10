@@ -15,6 +15,8 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
+  console.log('디바운스 키워드: ', debouncedKeyword);
+
   useEffect(() => {
     if (debouncedKeyword !== '') {
       fetch(`/api/search/${debouncedKeyword}`, {
@@ -40,7 +42,7 @@ export default function Home() {
           setErrorMessage(err.message);
         });
     }
-  }, [debouncedKeyword]);
+  }, [debouncedKeyword, router]);
 
   return (
     <div className="flex h-full flex-col items-center justify-start">
